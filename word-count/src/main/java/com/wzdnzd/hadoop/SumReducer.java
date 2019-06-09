@@ -1,11 +1,11 @@
 /**
  * @Author : wzdnzd
  * @Time : 2019-06-06
- * @Project : word-count
+ * @Project : bigdata
  */
 
 
-package com.wzdnzd.wordcount;
+package com.wzdnzd.hadoop;
 
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;

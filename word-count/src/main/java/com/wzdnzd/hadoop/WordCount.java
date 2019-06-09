@@ -1,11 +1,11 @@
 /**
  * @Author : wzdnzd
  * @Time : 2019-06-06
- * @Project : word-count
+ * @Project : bigdata
  */
 
 
-package com.wzdnzd.wordcount;
+package com.wzdnzd.hadoop;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FSDataOutputStream;
@@ -73,7 +73,7 @@ public class WordCount {
     }
 
     private static boolean fileUpload(FileSystem fs, File src, Path target) throws IOException {
-        if (fs == null || src == null || target == null || fs.exists(target))
+        if (fs == null || src == null || !src.exists() || target == null || fs.exists(target))
             return false;
 
         FSDataOutputStream outputStream = fs.create(target);
