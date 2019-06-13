@@ -22,7 +22,7 @@
   3）对于C页面来说，A投票0，B投票1，D投票$\frac{1}{2}$，所以C的PR值为$\frac{3}{2}$<br/>
   4）对于D页面来说，A投票$\frac{1}{2}$，B投票0，C投票0，所以D的PR值为$\frac{1}{2}$<br/>
   
-+ 根据的第一轮计算的结果进行下一次迭代<br/>
++ 根据的第一轮计算的结果进行下一次迭代：<br/>
   PR(A)：$\frac{3}{2}\times 0 + \frac{3}{2} \times \frac{1}{2} + \frac{1}{2} \times 0 = \frac{3}{4}$<br/>
   PR(B)：$\frac{1}{2}\times \frac{1}{2} + \frac{3}{2} \times \frac{1}{2} + \frac{1}{2} \times \frac{1}{2} = \frac{5}{4}$<br/>
   PR(C)：$\frac{1}{2}\times 0 + \frac{3}{2} \times 1 + \frac{1}{2} \times \frac{1}{2} = \frac{7}{4}$<br/>
@@ -35,7 +35,7 @@
   
 根据前面的计算PR的方法，那么如果一个网页只出不入：PR会为0，只入不出：PR会很高，但是站在互联网的角度，PR为0是不科学的，我们可以通过直接在地址栏输入某个网页的地址来访问该网页，这里忽略了这一点，只是认为没有别的网页的链接指向它，它的PR值就为0。而PR值很高的网页应该是一个质量很高的网页，那么它应该有一些出链，为其他页面做贡献。所以应该修正PageRank计算公式：增加阻尼系数（damping factor）d，一般取值$d=0.85$
 
-完整PageRank计算公式为：
+PageRank计算公式为：
 $$PR(p_i)=\frac{1-d}{N} + d\sum_{p_j\in{M(p_i)}}\frac{PR(p_j)}{L(p_j)}$$
 其中：
 + d：阻尼系数
@@ -43,3 +43,6 @@ $$PR(p_i)=\frac{1-d}{N} + d\sum_{p_j\in{M(p_i)}}\frac{PR(p_j)}{L(p_j)}$$
 + $M(p_i)$：指向页面 $p_i$ 的页面集合
 + $PR(p_j)$：页面 `j` 的PR值
 + $L(p_j)$：页面 $p_j$ 链出页面的数量
+
+## MapReduce实现
+参考 [PageRank算法并行实现](http://blog.fens.me/algorithm-pagerank-mapreduce/)

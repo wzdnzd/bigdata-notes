@@ -14,8 +14,8 @@ import org.apache.hadoop.mapreduce.Reducer;
 import java.io.IOException;
 
 public class TemperatureReduce extends Reducer<Temperature, IntWritable, Text, Text> {
-    Text outputKey = new Text();
-    Text outputVal = new Text();
+    private Text outputKey = new Text();
+    private Text outputVal = new Text();
 
     @Override
     protected void reduce(Temperature key, Iterable<IntWritable> values, Context context) throws IOException, InterruptedException {

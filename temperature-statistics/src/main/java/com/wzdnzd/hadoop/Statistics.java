@@ -68,6 +68,6 @@ public class Statistics {
         FSDataOutputStream outputStream = target.getFileSystem(conf).create(target);
         InputStream inputStream = new BufferedInputStream(new FileInputStream(src));
 
-        IOUtils.copyBytes(inputStream, outputStream, 1024, false);
+        IOUtils.copyBytes(inputStream, outputStream, 1024, true);
     }
 }
