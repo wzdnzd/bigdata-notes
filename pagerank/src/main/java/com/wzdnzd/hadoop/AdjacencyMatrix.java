@@ -77,7 +77,7 @@ class AdjacencyMatrix {
     private static void upload(@NotNull FileSystem fs, @NotNull File src,
                                @NotNull String target, boolean overwrite) throws IOException {
         if (!src.exists())
-            throw new IllegalArgumentException("file or directory not exists: " + src.getName());
+            throw new IllegalArgumentException("file or directory not exists: " + src.getAbsolutePath());
 
         target = target.endsWith("/") ? target : target + "/";
         File[] files = src.isFile() ? new File[]{src} : src.listFiles();
@@ -88,7 +88,7 @@ class AdjacencyMatrix {
         for (File file : files) {
             success = fileUpload(fs, file, new Path(target + file.getName()), overwrite);
             if (!success)
-                logger.info("+++++ file " + file.getName() + " upload failed +++++");
+                logger.info("+++++ file " + file.getAbsolutePath() + " upload failed +++++");
         }
     }
 
@@ -129,6 +129,9 @@ class AdjacencyMatrix {
 
         Job job = Job.getInstance(conf, "AdjacencyMatrix");
         job.setJarByClass(AdjacencyMatrix.class);
+
+        if (map.containsKey("jarPath"))
+            job.setJar(map.get("jarPath"));
 
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(Text.class);

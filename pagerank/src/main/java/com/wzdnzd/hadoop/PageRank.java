@@ -108,6 +108,9 @@ class PageRank {
         Job job = Job.getInstance(conf, "PageRank");
         job.setJarByClass(PageRank.class);
 
+        if (map.containsKey("jarPath"))
+            job.setJar(map.get("jarPath"));
+
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(Text.class);
 

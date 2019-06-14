@@ -79,6 +79,9 @@ class Normalize {
         Job job = Job.getInstance(conf, "Normalize");
         job.setJarByClass(Normalize.class);
 
+        if (map.containsKey("jarPath"))
+            job.setJar(map.get("jarPath"));
+
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(Text.class);
 
