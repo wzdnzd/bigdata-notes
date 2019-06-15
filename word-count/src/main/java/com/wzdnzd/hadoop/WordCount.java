@@ -26,6 +26,7 @@ public class WordCount {
 
     public static void main(String[] args) {
         Configuration conf = new Configuration();
+        // conf.set("mapreduce.app-submission.cross-platform", "true");
 
         try {
             String path = "/learn/data/wordcount";
@@ -56,6 +57,10 @@ public class WordCount {
 
             Job job = Job.getInstance(conf, "WordCount");
             job.setJarByClass(WordCount.class);
+
+            // String jarPath = "";
+            // job.setJar(jarPath);
+
             job.setMapperClass(TokenizerMapper.class);
             job.setCombinerClass(SumReducer.class);
             job.setReducerClass(SumReducer.class);

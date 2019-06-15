@@ -59,7 +59,7 @@ class Normalize {
                 k.set(tokens[0]);
 
                 float f = Float.parseFloat(tokens[1]);
-                v.set(PageRankJob.scaleFloat(f / sum));
+                v.set(PageRankJob.FORMAT.format(f / sum));
                 context.write(k, v);
             }
         }

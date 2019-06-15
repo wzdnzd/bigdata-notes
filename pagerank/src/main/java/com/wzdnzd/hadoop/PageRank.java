@@ -89,7 +89,7 @@ class PageRank {
                 pr += A * B;
             }
 
-            v.set(PageRankJob.scaleFloat(pr));
+            v.set(PageRankJob.FORMAT.format(pr));
             context.write(key, v);
         }
     }

@@ -7,7 +7,6 @@
 
 package com.wzdnzd.hadoop;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.hadoop.conf.Configuration;
 
 import java.io.IOException;
@@ -25,10 +24,7 @@ public class PageRankJob {
     static final String PR = "pr";
 
     private static final int EPOCH = 15;
-
-    static String scaleFloat(float f) {
-        return new DecimalFormat("##0.000000").format(f);
-    }
+    static final DecimalFormat FORMAT = new DecimalFormat("##0.000000");
 
     public static void main(String[] args) throws InterruptedException, IOException, ClassNotFoundException {
         String dataPath = PageRankJob.class.getResource("/data").getPath();
@@ -44,8 +40,8 @@ public class PageRankJob {
         map.put("tmpOutput", "/learn/data/pagerank/tmp");
         map.put("result", "/learn/result/pagerank");
 
-        if (args != null && args.length > 0 && StringUtils.isNotBlank(args[0]))
-            map.put("jarPath", args[0]);
+        // String jarPath = "";
+        // map.put("jarPath", jarPath);
 
         boolean success = AdjacencyMatrix.run(conf, map);
         if (!success) System.exit(-1);

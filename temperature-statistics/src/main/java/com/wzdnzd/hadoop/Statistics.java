@@ -21,9 +21,10 @@ import java.io.*;
 
 public class Statistics {
     private static Logger logger = Logger.getLogger(Statistics.class);
-    private static Configuration conf = new Configuration();
 
     public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
+        Configuration conf = new Configuration();
+
         String path = "/learn/data/temperature";
         Path inputPath = new Path(path);
         Path outputPath = new Path("/learn/result/temperature");
@@ -40,11 +41,17 @@ public class Statistics {
             assert files != null && files.length > 0;
 
             for (File file : files)
-                fileUpload(file, new Path(path + "/" + file.getName()));
+                fileUpload(conf, file, new Path(path + "/" + file.getName()));
         }
+
+        // conf.set("mapreduce.app-submission.cross-platform", "true");
 
         Job job = Job.getInstance(conf, "TemperatureStatics");
         job.setJarByClass(Statistics.class);
+
+        // String jarPath = "";
+        // job.setJar(jarPath);
+
         job.setMapperClass(TemperatureMapper.class);
         job.setMapOutputKeyClass(Temperature.class);
         job.setMapOutputValueClass(IntWritable.class);
@@ -59,9 +66,9 @@ public class Statistics {
         System.exit(job.waitForCompletion(true) ? 0 : 1);
     }
 
-    private static void fileUpload(File src, Path target) throws IOException {
+    private static void fileUpload(Configuration conf, File src, Path target) throws IOException {
         if (src == null || !src.exists() || target == null || target.getFileSystem(conf).exists(target)) {
-            logger.info("+++++    file " + src.getName() + " upload failed.    +++++");
+            logger.info("+++++ file " + src.getName() + " upload failed. +++++");
             return;
         }
 
