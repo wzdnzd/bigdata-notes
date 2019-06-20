@@ -24,11 +24,11 @@
 </property>
 <property>
 <name>dfs.namenode.name.dir</name>
-<value>file:/home/hadoop/dfs/name</value>
+<value>file:/home/hadoop/data/dfs/name</value>
 </property>
 <property>
 <name>dfs.datanode.data.dir</name>
-<value>file:/home/hadoop/dfs/data</value>
+<value>file:/home/hadoop/data/dfs/data</value>
 </property>
 <property>
 <name>dfs.replication</name>

@@ -7,6 +7,7 @@
 
 package com.wzdnzd.hadoop;
 
+import com.sun.istack.NotNull;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FSDataOutputStream;
 import org.apache.hadoop.fs.Path;
@@ -44,13 +45,14 @@ public class Statistics {
                 fileUpload(conf, file, new Path(path + "/" + file.getName()));
         }
 
-        // conf.set("mapreduce.app-submission.cross-platform", "true");
+        conf.set("mapreduce.app-submission.cross-platform", "true");
 
         Job job = Job.getInstance(conf, "TemperatureStatics");
         job.setJarByClass(Statistics.class);
 
-        // String jarPath = "";
-        // job.setJar(jarPath);
+        // must be set before running
+        String jarPath = "";
+        job.setJar(jarPath);
 
         job.setMapperClass(TemperatureMapper.class);
         job.setMapOutputKeyClass(Temperature.class);
@@ -66,8 +68,9 @@ public class Statistics {
         System.exit(job.waitForCompletion(true) ? 0 : 1);
     }
 
-    private static void fileUpload(Configuration conf, File src, Path target) throws IOException {
-        if (src == null || !src.exists() || target == null || target.getFileSystem(conf).exists(target)) {
+    private static void fileUpload(@NotNull Configuration conf,
+                                   @NotNull File src, @NotNull Path target) throws IOException {
+        if (!src.exists() || target.getFileSystem(conf).exists(target)) {
             logger.info("+++++ file " + src.getName() + " upload failed. +++++");
             return;
         }

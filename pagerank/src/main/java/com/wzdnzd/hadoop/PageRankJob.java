@@ -30,6 +30,7 @@ public class PageRankJob {
         String dataPath = PageRankJob.class.getResource("/data").getPath();
 
         Configuration conf = new Configuration();
+        conf.set("mapreduce.app-submission.cross-platform", "true");
 
         Map<String, String> map = new HashMap<>();
         map.put("pageData", dataPath + "/page");
@@ -40,8 +41,9 @@ public class PageRankJob {
         map.put("tmpOutput", "/learn/data/pagerank/tmp");
         map.put("result", "/learn/result/pagerank");
 
-        // String jarPath = "";
-        // map.put("jarPath", jarPath);
+        // must be set before running
+        String jarPath = "";
+        map.put("jarPath", jarPath);
 
         boolean success = AdjacencyMatrix.run(conf, map);
         if (!success) System.exit(-1);
