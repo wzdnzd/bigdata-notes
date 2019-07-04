@@ -5,7 +5,7 @@
  */
 
 
-package com.wzdnzd.spark;
+package com.wzdnzd.spark.java;
 
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaPairRDD;
@@ -20,9 +20,15 @@ public class WordCount {
     private static SparkConf sparkConf = new SparkConf().setAppName("WordCount").setMaster("local[*]");
 
     public static void main(String[] args) {
-        String dataPath = WordCount.class.getResource("/").getPath() + "/data/text1";
-
+        // String dataPath = WordCount.class.getResource("/").getPath() + "/data/text1";
+        String dataPath = "hdfs://hadoop-namenode-01:9000/learn/data/wordcount";
+        
         JavaSparkContext sc = new JavaSparkContext(sparkConf);
+
+        // fix java.io.IOException: No FileSystem for scheme : hdfs
+        sc.hadoopConfiguration().set("fs.hdfs.impl", org.apache.hadoop.hdfs.DistributedFileSystem.class.getName());
+        sc.hadoopConfiguration().set("fs.file.impl", org.apache.hadoop.fs.LocalFileSystem.class.getName());
+
         JavaRDD<String> rdd = sc.textFile(dataPath).flatMap((FlatMapFunction<String, String>) line ->
                 (Arrays.asList(line.replaceAll("[^a-z0-9A-Z\\-]", " ").split(" ")).iterator()));
 
