@@ -18,6 +18,7 @@
         <module>word-count</module>
         <module>temperature-statistics</module>
         <module>pagerank</module>
+        <module>ct-call</module>
     </modules>
 
     <packaging>pom</packaging>

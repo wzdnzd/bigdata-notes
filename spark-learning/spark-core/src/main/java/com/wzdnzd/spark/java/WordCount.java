@@ -22,7 +22,7 @@ public class WordCount {
     public static void main(String[] args) {
         // String dataPath = WordCount.class.getResource("/").getPath() + "/data/text1";
         String dataPath = "hdfs://hadoop-namenode-01:9000/learn/data/wordcount";
-        
+
         JavaSparkContext sc = new JavaSparkContext(sparkConf);
 
         // fix java.io.IOException: No FileSystem for scheme : hdfs
