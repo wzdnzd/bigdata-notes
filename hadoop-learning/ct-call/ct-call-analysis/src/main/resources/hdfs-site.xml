@@ -17,26 +17,26 @@
 <!-- Put site-specific property overrides in this file. -->
 
 <configuration>
-<property>
-<name>dfs.namenode.secondary.http-address</name>
-<value>hadoop-datanode-01:9000</value>
-<description># 通过web界面来查看HDFS状态 </description>
-</property>
-<property>
-<name>dfs.namenode.name.dir</name>
-<value>file:/home/hadoop/data/hadoop/dfs/name</value>
-</property>
-<property>
-<name>dfs.datanode.data.dir</name>
-<value>file:/home/hadoop/data/hadoop/dfs/data</value>
-</property>
-<property>
-<name>dfs.replication</name>
-<value>2</value>
-<description># 每个Block有2个备份</description>
-</property>
-<property>
-<name>dfs.webhdfs.enabled</name>
-<value>true</value>
-</property>
+    <property>
+        <name>dfs.namenode.secondary.http-address</name>
+        <value>hadoop-datanode-01:9000</value>
+        <description># 通过web界面来查看HDFS状态</description>
+    </property>
+    <property>
+        <name>dfs.namenode.name.dir</name>
+        <value>file:/home/hadoop/data/hadoop/dfs/name</value>
+    </property>
+    <property>
+        <name>dfs.datanode.data.dir</name>
+        <value>file:/home/hadoop/data/hadoop/dfs/data</value>
+    </property>
+    <property>
+        <name>dfs.replication</name>
+        <value>2</value>
+        <description># 每个Block有2个备份</description>
+    </property>
+    <property>
+        <name>dfs.webhdfs.enabled</name>
+        <value>true</value>
+    </property>
 </configuration>

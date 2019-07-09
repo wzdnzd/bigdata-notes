@@ -22,7 +22,8 @@ public class CallLogKafkaConsumer implements Consumer {
     @Override
     public void consume() {
         Properties properties = new Properties();
-        String configFile = CallLogKafkaConsumer.class.getClassLoader().getResource("").getPath() + "kafka-consumer.properties";
+        String configFile = CallLogKafkaConsumer.class.getClassLoader().
+                getResource("").getPath() + "kafka-consumer.properties";
         try {
             properties.load(new FileInputStream(configFile));
         } catch (IOException e) {
@@ -43,7 +44,6 @@ public class CallLogKafkaConsumer implements Consumer {
             ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(1000));
             for (ConsumerRecord<String, String> record : records) {
                 try {
-                    System.out.println(record.value());
                     hBaseDao.insert(record.value());
                 } catch (IOException e) {
                     throw new RuntimeException("insert data to table failed");

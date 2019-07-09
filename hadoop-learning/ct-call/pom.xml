@@ -16,11 +16,11 @@
         <module>ct-call-producer</module>
         <module>ct-call-consumer</module>
         <module>ct-call-coprocessor</module>
+        <module>ct-call-analysis</module>
     </modules>
 
     <properties>
         <hbase.version>2.2.0</hbase.version>
-        <kafka.version>2.3.0</kafka.version>
         <hadoop.version>3.1.2</hadoop.version>
     </properties>
 
@@ -39,18 +39,6 @@
             <groupId>org.apache.hbase</groupId>
             <artifactId>hbase-client</artifactId>
             <version>${hbase.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka_2.12</artifactId>
-            <version>${kafka.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka-clients</artifactId>
-            <version>${kafka.version}</version>
         </dependency>
 
         <dependency>

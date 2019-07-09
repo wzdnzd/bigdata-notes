@@ -17,29 +17,33 @@
 <!-- Put site-specific property overrides in this file. -->
 
 <configuration>
-<property>
-<name>mapreduce.framework.name</name>
-<value>yarn</value>
-</property>
-<property>  
-<name>yarn.nodemanager.aux-services</name>  
-<value>mapreduce_shuffle</value>  
-</property>
-<property>  
-    <name>yarn.nodemanager.aux-services.mapreduce.shuffle.class</name>  
-    <value>org.apache.hadoop.mapred.ShuffleHandler</value>  
-</property>
-<property>
-    <name>mapreduce.jobhistory.address</name>
-    <value>hadoop-namenode-01:10020</value>
-</property>
-<property>
-    <name>mapreduce.jobhistory.webapp.address</name>
-    <value>hadoop-namenode-01:19888</value>
-</property>
-<property>
-<!--Not marked as final so jobs can include JVM debuggung options -->
-<name>mapred.child.java.opts</name>
-<value>-Xmx400m</value>
-</property>
+    <property>
+        <name>mapreduce.framework.name</name>
+        <value>yarn</value>
+    </property>
+    <property>
+        <name>yarn.nodemanager.aux-services</name>
+        <value>mapreduce_shuffle</value>
+    </property>
+    <property>
+        <name>yarn.nodemanager.aux-services.mapreduce.shuffle.class</name>
+        <value>org.apache.hadoop.mapred.ShuffleHandler</value>
+    </property>
+    <property>
+        <name>mapreduce.jobhistory.address</name>
+        <value>hadoop-namenode-01:10020</value>
+    </property>
+    <property>
+        <name>mapreduce.jobhistory.webapp.address</name>
+        <value>hadoop-namenode-01:19888</value>
+    </property>
+    <property>
+        <!--Not marked as final so jobs can include JVM debuggung options -->
+        <name>mapred.child.java.opts</name>
+        <value>-Xmx400m</value>
+    </property>
+    <property>
+        <name>mapreduce.app-submission.cross-platform</name>
+        <value>true</value>
+    </property>
 </configuration>
