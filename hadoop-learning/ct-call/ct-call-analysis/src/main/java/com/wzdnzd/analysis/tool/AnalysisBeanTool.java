@@ -31,7 +31,7 @@ public class AnalysisBeanTool implements Tool {
         Scan scan = new Scan();
         byte[] family = Bytes.toBytes(ConstantVal.HBASE_CF_CALLER.getVal());
         scan.addFamily(family);
-        // scan.addColumn(family, Bytes.toBytes("duration"));
+        scan.addColumn(family, Bytes.toBytes("duration"));
 
         TableMapReduceUtil.initTableMapperJob(ConstantVal.HBASE_TABLE.getVal(), scan,
                 AnalysisMapper.class, AnalysisKey.class, Text.class, job);
