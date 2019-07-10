@@ -28,20 +28,26 @@ public class AnalysisMapper extends TableMapper<AnalysisKey, Text> {
         Cell[] cells = value.rawCells();
         assert cells != null && cells.length > 0;
 
-        Text duration = new Text(Bytes.toString(CellUtil.cloneValue(cells[0])));
+        Text duration = null;
+        for (Cell cell : cells) {
+            if ("duration".equals(CellUtil.cloneQualifier(cell))) {
+                duration = new Text(Bytes.toString(CellUtil.cloneValue(cells[0])));
+            }
+        }
+        if (duration != null) {
+            // day
+            context.write(new AnalysisKey(contents[1], contents[2].substring(0, 8)), duration);
+            // month
+            context.write(new AnalysisKey(contents[1], contents[2].substring(0, 6)), duration);
+            // year
+            context.write(new AnalysisKey(contents[1], contents[2].substring(0, 4)), duration);
 
-        // day
-        context.write(new AnalysisKey(contents[1], contents[2]), duration);
-        // month
-        context.write(new AnalysisKey(contents[1], contents[2].substring(0, 6)), duration);
-        // year
-        context.write(new AnalysisKey(contents[1], contents[2].substring(0, 4)), duration);
-
-        // day
-        context.write(new AnalysisKey(contents[3], contents[2]), duration);
-        // month
-        context.write(new AnalysisKey(contents[3], contents[2].substring(0, 6)), duration);
-        // year
-        context.write(new AnalysisKey(contents[3], contents[2].substring(0, 4)), duration);
+            // day
+            context.write(new AnalysisKey(contents[3], contents[2].substring(0, 8)), duration);
+            // month
+            context.write(new AnalysisKey(contents[3], contents[2].substring(0, 6)), duration);
+            // year
+            context.write(new AnalysisKey(contents[3], contents[2].substring(0, 4)), duration);
+        }
     }
 }
