@@ -11,6 +11,7 @@
         <module>spark-core</module>
         <module>spark-sql</module>
         <module>spark-streaming</module>
+        <module>recommend-system</module>
     </modules>
     <packaging>pom</packaging>
 

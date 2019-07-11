@@ -1,0 +1,19 @@
+[Unit]
+Description=zookeeper
+After=syslog.target network.target
+
+[Service]
+Type=forking
+Environment=JAVA_HOME=/usr/java/default
+Environment=ZOO_LOG_DIR=/home/hadoop/zookeeper/logs
+ExecStart=/home/hadoop/zookeeper/bin/zkServer.sh start
+ExecReload=/home/hadoop/zookeeper/bin/zkServer.sh restart
+ExecStop=/home/hadoop/zookeeper/bin/zkServer.sh stop
+PIDFile=/home/hadoop/zookeeper/data/zookeeper_server.pid
+Restart=on-failure
+User=hadoop
+Group=hadoop
+SyslogIdentifier=hadoop
+
+[Install]
+WantedBy=multi-user.target

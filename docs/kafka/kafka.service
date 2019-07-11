@@ -1,0 +1,16 @@
+[Unit]
+Description=kafka
+After=syslog.target network.target zookeeper.service
+
+[Service]
+Type=forking
+Environment=JAVA_HOME=/usr/java/default
+ExecStart=/home/hadoop/kafka/bin/kafka-server-start.sh -daemon /home/hadoop/kafka/config/server.properties
+ExecStop=/home/hadoop/kafka/bin/kafka-server-stop.sh
+Restart=on-failure
+User=hadoop
+Group=hadoop
+SyslogIdentifier=hadoop
+
+[Install]
+WantedBy=multi-user.target
