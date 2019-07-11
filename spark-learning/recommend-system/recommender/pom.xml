@@ -12,7 +12,7 @@
     <artifactId>recommender</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>data-loader</module>
+        <module>common</module>
     </modules>
 
     <dependencyManagement>
