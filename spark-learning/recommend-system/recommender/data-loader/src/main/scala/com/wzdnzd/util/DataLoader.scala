@@ -20,8 +20,6 @@ case class Rating(uid: Int, pid: Int, score: Double, timestamp: Long)
 
 case class MongoConfig(uri: String, db: String)
 
-class DataLoader()
-
 object DataLoader {
 	val BASEDIR: URL = DataLoader.getClass.getResource("/data")
 	val PRODUCT_DATA_PATH: String = BASEDIR + "/products.csv"
