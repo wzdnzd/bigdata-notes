@@ -11,8 +11,8 @@ import com.mongodb.casbah.{MongoClient, MongoClientURI}
 import com.wzdnzd.config.MongoConfig
 import org.apache.spark.sql.DataFrame
 
-object StoreDataUtil {
-	def storeToMongo(df: DataFrame, collectionName: String)(indexes: String*)(implicit mongoConfig: MongoConfig): Unit = {
+object DataReadWriteUtil {
+	def storeToMongo(df: DataFrame, collectionName: String, indexes: String*)(implicit mongoConfig: MongoConfig): Unit = {
 		val mongoClient: MongoClient = MongoClient(MongoClientURI(mongoConfig.uri))
 		val collection = mongoClient(mongoConfig.db)(collectionName)
 		collection.dropCollection()
@@ -23,7 +23,10 @@ object StoreDataUtil {
 			.format("com.mongodb.spark.sql")
 			.save()
 
-		indexes.foreach(index => collection.createIndex(MongoDBObject(index -> 1)))
+		indexes.foreach(index => {
+			if (index != null && !"".equals(index))
+				collection.createIndex(MongoDBObject(index -> 1))
+		})
 
 		mongoClient.close()
 	}

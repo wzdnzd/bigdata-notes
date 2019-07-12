@@ -9,7 +9,7 @@ package com.wzdnzd
 import java.net.URL
 
 import com.wzdnzd.config.{ConstantValue, MongoConfig, Product, Rating}
-import com.wzdnzd.util.StoreDataUtil
+import com.wzdnzd.util.DataReadWriteUtil
 import org.apache.spark.SparkConf
 import org.apache.spark.sql.SparkSession
 
@@ -38,8 +38,8 @@ object DataLoader {
 
 		implicit val mongoConfig: MongoConfig = MongoConfig(ConstantValue.CONFIG("mongo.uri"), ConstantValue.CONFIG("mongo.db"))
 
-		StoreDataUtil.storeToMongo(productDF, ConstantValue.MONGODB_PRODUCT_COLLECTION)("pid")
-		StoreDataUtil.storeToMongo(ratingDF, ConstantValue.MONGODB_RATING_COLLECTION)("pid", "uid")
+		DataReadWriteUtil.storeToMongo(productDF, ConstantValue.MONGODB_PRODUCT_COLLECTION, "pid")
+		DataReadWriteUtil.storeToMongo(ratingDF, ConstantValue.MONGODB_RATING_COLLECTION, "pid", "uid")
 
 		println("+++++ data load finished +++++")
 	}
