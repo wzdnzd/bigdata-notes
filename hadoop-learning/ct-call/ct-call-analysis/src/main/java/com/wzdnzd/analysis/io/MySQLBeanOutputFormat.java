@@ -7,7 +7,7 @@
 
 package com.wzdnzd.analysis.io;
 
-import com.wzdnzd.util.JDBCUtil;
+import com.wzdnzd.utils.JDBCUtil;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.mapreduce.*;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter;

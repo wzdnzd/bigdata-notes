@@ -4,7 +4,7 @@
  * @Project : bigdata
  */
 
-package com.wzdnzd.util;
+package com.wzdnzd.utils;
 
 import java.text.DecimalFormat;
 import java.text.ParseException;

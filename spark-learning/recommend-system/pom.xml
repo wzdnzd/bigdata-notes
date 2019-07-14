@@ -12,7 +12,7 @@
     <artifactId>recommend-system</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>recommender</module>
+        <module>recommend</module>
     </modules>
 
     <properties>
@@ -25,7 +25,7 @@
         <spark.artifact>2.12</spark.artifact>
         <spark.version>2.4.3</spark.version>
         <scala.version>2.12.8</scala.version>
-        <jblas.version>1.2.4</jblas.version>
+        <jblas.version>1.2.1</jblas.version>
     </properties>
 
     <dependencies>

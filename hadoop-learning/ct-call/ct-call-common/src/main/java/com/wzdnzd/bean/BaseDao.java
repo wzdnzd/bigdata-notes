@@ -8,7 +8,7 @@ package com.wzdnzd.bean;
 
 
 import com.wzdnzd.constant.ConstantVal;
-import com.wzdnzd.util.NumberFormatUtil;
+import com.wzdnzd.utils.NumberFormatUtil;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.*;
 import org.apache.hadoop.hbase.client.*;

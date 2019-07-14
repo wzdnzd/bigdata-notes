@@ -5,7 +5,7 @@
  */
 
 
-package com.wzdnzd.util;
+package com.wzdnzd.utils;
 
 import java.io.IOException;
 import java.sql.Connection;

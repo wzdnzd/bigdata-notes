@@ -9,7 +9,7 @@ package com.wzdnzd.producer.bean;
 import com.wzdnzd.bean.DataInput;
 import com.wzdnzd.bean.DataOutput;
 import com.wzdnzd.bean.Producer;
-import com.wzdnzd.util.NumberFormatUtil;
+import com.wzdnzd.utils.NumberFormatUtil;
 
 import java.io.IOException;
 import java.util.Date;
