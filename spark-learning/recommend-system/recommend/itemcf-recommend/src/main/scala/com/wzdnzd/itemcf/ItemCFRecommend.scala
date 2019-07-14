@@ -40,7 +40,7 @@ object ItemCFRecommend {
 		val query = "select product1, product2, count(uid) as count, first(count1) as count1, first(count2) as count2 from joined group by product1, product2"
 		val coOccurrenceDF = sparkSession.sql(query).cache()
 
-		val simDF = coOccurrenceDF.map {
+		val result = coOccurrenceDF.map {
 			row =>
 				val similarity = row.getAs[Long]("count") / math.sqrt(row.getAs[Long]("count1") * row.getAs[Long]("count2"))
 				(row.getInt(0), (row.getInt(1), similarity))
@@ -57,7 +57,7 @@ object ItemCFRecommend {
 			}
 			.toDF()
 
-		DataWriteUtil.storeToMongo(simDF, ConstantValue.ITEM_CF_PRODUCT_RECS)
+		DataWriteUtil.storeToMongo(result, ConstantValue.ITEM_CF_PRODUCT_RECS)
 
 		sparkSession.stop()
 	}
