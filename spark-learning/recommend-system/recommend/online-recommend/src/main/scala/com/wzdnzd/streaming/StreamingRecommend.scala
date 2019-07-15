@@ -91,8 +91,8 @@ object StreamingRecommend {
 	}
 
 	def getTopNSimProducts(num: Int, pid: Int, uid: Int,
-						   products: scala.collection.Map[Int, scala.collection.immutable.Map[Int, Double]])
-						  (implicit mongoConfig: MongoConfig): Array[Int] = {
+	                       products: scala.collection.Map[Int, scala.collection.immutable.Map[Int, Double]])
+	                      (implicit mongoConfig: MongoConfig): Array[Int] = {
 
 		val allSimProducts = products(pid).toArray
 		val ratingExist = ConnHelper.mongoClient(mongoConfig.db)(ConstantValue.RATING_COLLECTION)
@@ -103,7 +103,7 @@ object StreamingRecommend {
 	}
 
 	def computeProductScores(products: scala.collection.Map[Int, scala.collection.immutable.Map[Int, Double]],
-							 recentlyRatings: Array[(Int, Double)], topNSimProducts: Array[Int]): Array[(Int, Double)] = {
+	                         recentlyRatings: Array[(Int, Double)], topNSimProducts: Array[Int]): Array[(Int, Double)] = {
 		val scores = scala.collection.mutable.ArrayBuffer[(Int, Double)]()
 		val record = scala.collection.mutable.HashMap[Int, (Int, Int)]()
 

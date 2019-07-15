@@ -29,7 +29,7 @@ object OfflineRecommend {
 			.load
 			.as[ProductRating]
 			.rdd
-			.map(item => (item.pid, item.uid, item.score))
+			.map(item => (item.uid, item.pid, item.score))
 			.cache()
 
 		val userRDD = ratingRDD.map(_._1).distinct()
@@ -73,5 +73,4 @@ object OfflineRecommend {
 
 		sparkSession.stop()
 	}
-
 }
