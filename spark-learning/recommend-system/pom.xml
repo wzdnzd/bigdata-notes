@@ -23,7 +23,7 @@
         <redis.version>3.0.1</redis.version>
         <kafka.version>2.3.0</kafka.version>
         <spark.artifact>2.12</spark.artifact>
-        <spark.version>2.4.3</spark.version>
+        <spark.version>3.3.3</spark.version>
         <scala.version>2.12.8</scala.version>
         <jblas.version>1.2.1</jblas.version>
     </properties>
