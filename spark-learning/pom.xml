@@ -20,7 +20,7 @@
         <spark.version>3.3.3</spark.version>
         <spark.artifact>2.12</spark.artifact>
         <hbase.version>2.2.0</hbase.version>
-        <hadoop.version>3.2.4</hadoop.version>
+        <hadoop.version>3.4.0</hadoop.version>
         <junit.version>4.12</junit.version>
     </properties>
 
